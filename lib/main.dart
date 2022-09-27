@@ -17,20 +17,23 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => UiProvider())],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'QR Scanner',
-          initialRoute: 'home',
-          routes: {
-            // ignore: prefer_const_constructors
-            'home': (_) => HomeScreen(),
-            // ignore: prefer_const_constructors
-            'mapa': (_) => MapScreen(),
-          },
-          theme: ThemeData(
-              primaryColor: Colors.deepPurple,
-              floatingActionButtonTheme: const FloatingActionButtonThemeData(
-                  backgroundColor: Colors.black,
-                  foregroundColor: Colors.white))),
+        debugShowCheckedModeBanner: false,
+        title: 'QR Scanner',
+        initialRoute: 'home',
+        routes: {
+          // ignore: prefer_const_constructors
+          'home': (_) => HomeScreen(),
+          // ignore: prefer_const_constructors
+          'mapa': (_) => MapScreen(),
+        },
+        theme: ThemeData.dark().copyWith(
+          appBarTheme: const AppBarTheme(color: Color.fromARGB(255, 0, 0, 0)),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              backgroundColor: Colors.black, foregroundColor: Colors.white),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+              backgroundColor: Color.fromARGB(255, 0, 0, 0)),
+        ),
+      ),
     );
   }
 }
