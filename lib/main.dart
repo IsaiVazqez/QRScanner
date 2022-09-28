@@ -29,7 +29,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           appBarTheme: const AppBarTheme(color: Color.fromARGB(255, 0, 0, 0)),
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
-              backgroundColor: Colors.black, foregroundColor: Colors.white),
+              shape: StadiumBorder(
+                  side: BorderSide(
+                color: Colors.grey,
+              )),
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white),
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
               backgroundColor: Color.fromARGB(255, 0, 0, 0)),
         ),

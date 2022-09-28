@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_scanner/models/scan_model.dart';
+import 'package:qr_scanner/providers/services.dart';
 import 'package:qr_scanner/providers/ui_provider.dart';
 import 'package:qr_scanner/screens/directions_screen.dart';
 import 'package:qr_scanner/screens/maps_page.dart';
@@ -39,6 +41,10 @@ class _HomePageBody extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
 
     final currentIndex = uiProvider.selectedMenuOpt;
+
+    // final tempScan = ScanModel(valor: 'http://google.com');
+
+    DBProvider.db.getAllScans().then(print);
 
     switch (currentIndex) {
       case 0:
