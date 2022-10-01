@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_scanner/models/scan_model.dart';
+import 'package:qr_scanner/providers/scan_list_provider.dart';
 import 'package:qr_scanner/providers/services.dart';
 import 'package:qr_scanner/providers/ui_provider.dart';
 import 'package:qr_scanner/screens/directions_screen.dart';
@@ -20,7 +21,9 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Historial'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Provider.of<ScanListProvider>(context, listen: false).deleteAll();
+            },
             icon: const Icon(CupertinoIcons.trash),
           )
         ],
@@ -42,15 +45,18 @@ class _HomePageBody extends StatelessWidget {
 
     final currentIndex = uiProvider.selectedMenuOpt;
 
-    // final tempScan = ScanModel(valor: 'http://google.com');
+    final scanListProvider =
+        Provider.of<ScanListProvider>(context, listen: false);
 
-    DBProvider.db.getAllScans().then(print);
+    // final tempScan = ScanModel(valor: 'http://google.com');
 
     switch (currentIndex) {
       case 0:
+        scanListProvider.loadSCansbyType('geo');
         return MapsPage();
 
       case 1:
+        scanListProvider.loadSCansbyType('http');
         return DirectionsPage();
 
       default:
