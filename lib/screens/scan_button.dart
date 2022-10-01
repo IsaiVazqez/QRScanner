@@ -17,7 +17,10 @@ class ScanButton extends StatelessWidget {
         final scanListProvider =
             Provider.of<ScanListProvider>(context, listen: false);
 
-        scanListProvider.newScan('http');
+        final scanListUrlProvider =
+            Provider.of<ScanListProviderURL>(context, listen: false);
+
+        String barcodeScanRes = 'https://youtube.com';
       },
       child: const Icon(CupertinoIcons.qrcode),
     );

@@ -8,6 +8,7 @@ import 'package:qr_scanner/providers/ui_provider.dart';
 import 'package:qr_scanner/screens/directions_screen.dart';
 import 'package:qr_scanner/screens/maps_page.dart';
 import 'package:qr_scanner/screens/scan_button.dart';
+import 'package:qr_scanner/utils/utils.dart';
 import 'package:qr_scanner/widgets/custom_navigatorbar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -45,8 +46,9 @@ class _HomePageBody extends StatelessWidget {
 
     final currentIndex = uiProvider.selectedMenuOpt;
 
-    final scanListProvider =
-        Provider.of<ScanListProvider>(context, listen: false);
+    final scanListProvider = Provider.of<ScanListProvider>(context);
+
+    final scanListUrlProvider = Provider.of<ScanListProviderURL>(context);
 
     // final tempScan = ScanModel(valor: 'http://google.com');
 
@@ -56,7 +58,7 @@ class _HomePageBody extends StatelessWidget {
         return MapsPage();
 
       case 1:
-        scanListProvider.loadSCansbyType('http');
+        scanListUrlProvider.loadSCansbyType('http');
         return DirectionsPage();
 
       default:

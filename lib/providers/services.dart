@@ -33,7 +33,7 @@ class DBProvider {
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
       await db.execute(
-          ''' CREATE TABLE SCANS(id INTEGER PRIMARY KEY, tipo TEXT, valor TEXT) ''');
+          ''' CREATE TABLE Scans(id INTEGER PRIMARY KEY, tipo TEXT, valor TEXT) ''');
     });
   }
 
@@ -67,7 +67,7 @@ class DBProvider {
     final db = await database;
 
     final res = await db!.rawQuery(
-      ''' SELECTE * FROM Scans WHERE type = '$type' ''',
+      ''' SELECT * FROM Scans WHERE tipo = '$type' ''',
     );
 
     return res.isNotEmpty ? res.map((s) => ScanModel.fromJson(s)).toList() : [];

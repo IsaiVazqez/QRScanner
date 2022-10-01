@@ -1,13 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:qr_scanner/providers/scan_list_provider.dart';
 
 import 'package:qr_scanner/widgets/scan_tiles.dart';
 
+import '../utils/utils.dart';
+
 class MapsPage extends StatelessWidget {
-  const MapsPage({Key? key}) : super(key: key);
+  const MapsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ScanTiles(tipo: 'geo');
+    final scanListProvider = Provider.of<ScanListProvider>(context);
+
+    return ListView.builder(
+        itemCount: scanListProvider.scans.length,
+        itemBuilder: (_, i) => ListTile(
+              leading: Icon(
+                CupertinoIcons.map,
+                color: Theme.of(context).primaryColor,
+              ),
+              title: Text(scanListProvider.scans[i].valor),
+              subtitle: Text(scanListProvider.scans[i].id.toString()),
+              trailing: Icon(CupertinoIcons.arrow_right,
+                  color: Theme.of(context).primaryColor),
+              onTap: () {
+                launchUrl(context, scanListProvider.scans[i]);
+              },
+            ));
   }
 }
