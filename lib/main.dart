@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => UiProvider()),
         ChangeNotifierProvider(create: (_) => ScanListProvider()),
-        ChangeNotifierProvider(create: (_) => ScanListProviderURL()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
           // ignore: prefer_const_constructors
           'home': (_) => HomeScreen(),
           // ignore: prefer_const_constructors
-          'mapa': (_) => MapScreen(),
+          'mapa': (_) => MapaPage(),
         },
         theme: ThemeData.dark().copyWith(
           appBarTheme: const AppBarTheme(color: Color.fromARGB(255, 0, 0, 0)),

@@ -6,6 +6,7 @@ import 'package:qr_scanner/providers/scan_list_provider.dart';
 import 'package:qr_scanner/providers/services.dart';
 import 'package:qr_scanner/providers/ui_provider.dart';
 import 'package:qr_scanner/screens/directions_screen.dart';
+import 'package:qr_scanner/screens/mapa_page.dart';
 import 'package:qr_scanner/screens/maps_page.dart';
 import 'package:qr_scanner/screens/scan_button.dart';
 import 'package:qr_scanner/utils/utils.dart';
@@ -48,8 +49,6 @@ class _HomePageBody extends StatelessWidget {
 
     final scanListProvider = Provider.of<ScanListProvider>(context);
 
-    final scanListUrlProvider = Provider.of<ScanListProviderURL>(context);
-
     // final tempScan = ScanModel(valor: 'http://google.com');
 
     switch (currentIndex) {
@@ -58,11 +57,11 @@ class _HomePageBody extends StatelessWidget {
         return MapsPage();
 
       case 1:
-        scanListUrlProvider.loadSCansbyType('http');
+        scanListProvider.loadSCansbyType('http');
         return DirectionsPage();
 
       default:
-        return MapsPage();
+        return MapaPage();
     }
   }
 }

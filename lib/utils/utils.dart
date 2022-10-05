@@ -3,7 +3,7 @@ import 'package:qr_scanner/models/scan_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-Future launchUrl(BuildContext context, ScanModel scan) async {
+launchUrl(BuildContext context, ScanModel scan) async {
   final url = scan.valor;
 
   if (scan.tipo! == 'http') {
